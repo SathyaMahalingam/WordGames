@@ -4,7 +4,7 @@
     User can scan and view the list of three letter words available in the word board by tapping onto the scan button.
     It takes user to the next screen which list the words available on the word board.
     Scanning finds out only three letter words available in horizontal left and right directions.
-#Getting Started
+# Getting Started
     These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 # Prerequisites
     The following components must be installed in order to go through the Usage Instructions.
@@ -22,21 +22,22 @@
     * The recommended IDE for Android development is Android Studio because it is developed and constantly updated by Google, has good support for Gradle, contains a range of useful monitoring and analysis tools and is fully tailored for Android development.
     * Avoid adding Android Studio's specific configuration files, such as .iml files to the version control system as these often contain configurations specific of your local machine, which won't work for others.
 #Installation
-    1. Open Android Studio and select the "Import project" menu item in the welcome screen.
-    2. Navigate to the location where you checked out the repository in your computer, and select the debug folder.
-    3. Android Studio should be able to import the project automatically, which includes the library itself and a minimal test app.
+    * Open Android Studio and select the "Import project" menu item in the welcome screen.
+    * Navigate to the location where you checked out the repository in your computer, and select the debug folder.
+    * Android Studio should be able to import the project automatically, which includes the library itself and a minimal test app.
 # Running the tests
    You can run the test cases using run button enabled on each test cases
+   Used Espresso UI testing and Mockito for Unit Testing
 # Versioning
     Version 0.0.1
     * Published Word Game Application
 # Contributing
-    1. Fork it
-    2. Create your feature branch (git checkout -b my-new-feature)
-    3. Commit your changes (git commit -am 'Added some feature')
-    4. Push to the branch (git push origin my-new-feature)
-    5. Create a new pull request
-    6. Update the change log with new version
+    * Fork it
+    * Create your feature branch (git checkout -b my-new-feature)
+    * Commit your changes (git commit -am 'Added some feature')
+    * Push to the branch (git push origin my-new-feature)
+    * Create a new pull request
+    * Update the change log with new version
 # Authors
     *  Sathya Mahalingam - Initial work
 # Releasing
