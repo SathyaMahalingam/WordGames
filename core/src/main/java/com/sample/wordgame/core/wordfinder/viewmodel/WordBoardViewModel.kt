@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.sample.wordgame.core.R
 import com.sample.wordgame.core.common.utils.JsonConverter
 import com.sample.wordgame.core.common.utils.RandomGenerator
+import com.sample.wordgame.core.common.utils.Trie
 import com.sample.wordgame.core.common.viewmodel.BaseViewModel
 import com.sample.wordgame.core.wordfinder.viewmodel.utils.WordBoardEventListener
 import java.util.*
@@ -23,13 +24,6 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
     var isRandomAlphabetLoading: Boolean = false
     private var resultItems: MutableList<String> = mutableListOf()
     private var gameBoard : Array<CharArray> = Array(5) {CharArray(5)}
-    /*private var arrayBoard : Array<CharArray> = arrayOf(
-        charArrayOf('c','o','t','a','t'),
-        charArrayOf('c','o','t','i','t'),
-        charArrayOf('c','o','d','o','g'),
-        charArrayOf('a','n','d','a','t'),
-        charArrayOf('c','o','m','a','t')
-    )*/
 
 
     /**
@@ -91,8 +85,6 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
         if(availableWords == null && availableWords.size == 0) {
             eventListener.showError(getApplication<Application>().getString(R.string.loading_wait),"")
         }else {
-            //resultItems = findWordsInBoard(arrayBoard, arrayListOf("cot","sam","pet","nap","dog","gat","man","pan",
-             //   "men","pad","and","mat")) as MutableList<String>
             showProgressView()
             resultItems.clear()
             resultItems.addAll(findWordsInBoard(gameBoard, availableWords) as MutableList<String>)
@@ -101,53 +93,11 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
         }
     }
 
-
-    inner class TrieNode {
-        var children = arrayOfNulls<TrieNode>(26)
-        var item = ""
-    }
-
-    inner class Trie {
-
-        var root = TrieNode()
-
-        fun insert(word: String) {
-            var node = root
-            for (c in word.toCharArray()) {
-                if (node.children[c - 'a'] == null) {
-                    node.children[c - 'a'] = TrieNode()
-                }
-                node = node.children[c - 'a']!!
-            }
-            node.item = word
-        }
-
-        fun search(word: String): Boolean {
-            var node = root
-            for (c in word.toCharArray()) {
-                if (node.children[c - 'a'] == null)
-                    return false
-                node = node.children[c - 'a']!!
-            }
-            return node.item == word
-        }
-
-        fun startsWith(prefix: String): Boolean {
-            var node = root
-            for (c in prefix.toCharArray()) {
-                if (node.children[c - 'a'] == null)
-                    return false
-                node = node.children[c - 'a']!!
-            }
-            return true
-        }
-    }
-
     /**
      * This method is used to find words present on the board
      */
     private fun findWordsInBoard(board: Array<CharArray>, words: List<String>): List<String> {
-        var result = HashSet<String>()
+        var result = TreeSet<String>()
         val trie = Trie()
         for (word in words) {
             trie.insert(word)
@@ -169,13 +119,13 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
     private fun search(
         board: Array<CharArray>,
         visited: Array<BooleanArray>,
-        result: HashSet<String>,
+        result: TreeSet<String>,
         nodeValue: String,
         i: Int,
         j: Int,
         trie: Trie
     ) {
-        var nodeValue = nodeValue
+        var node = nodeValue
         val m = board.size
         val n = board[0].size
 
@@ -186,18 +136,18 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
         if (visited[i][j])
             return
 
-        nodeValue += board[i][j]
+        node += board[i][j]
 
-        if (!trie.startsWith(nodeValue))
+        if (!trie.startsWith(node))
             return
 
-        if (trie.search(nodeValue)) {
-            result.add(nodeValue)
+        if (trie.search(node)) {
+            result.add(node)
         }
 
         visited[i][j] = true
-        search(board, visited, result, nodeValue, i, j - 1, trie)
-        search(board, visited, result, nodeValue, i, j + 1, trie)
+        search(board, visited, result, node, i, j - 1, trie)
+        search(board, visited, result, node, i, j + 1, trie)
         visited[i][j] = false
     }
 
