@@ -93,9 +93,11 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
         }else {
             //resultItems = findWordsInBoard(arrayBoard, arrayListOf("cot","sam","pet","nap","dog","gat","man","pan",
              //   "men","pad","and","mat")) as MutableList<String>
+            showProgressView()
             resultItems.clear()
             resultItems.addAll(findWordsInBoard(gameBoard, availableWords) as MutableList<String>)
             eventListener.launchWordListScreen(resultItems as ArrayList<String>?)
+            showContentView()
         }
     }
 
