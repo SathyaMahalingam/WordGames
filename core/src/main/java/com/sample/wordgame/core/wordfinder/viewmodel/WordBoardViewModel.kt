@@ -47,9 +47,9 @@ class WordBoardViewModel(app: Application) : BaseViewModel(app) {
      * This method is used to get available words from assets
      */
     fun fetchAvailableWordsFromAsset(){
-        val element:  List<String>? = JsonConverter.getJSONResource(
+        val words:  List<String>? = JsonConverter.getJSONResource(
             getApplication(),getApplication<Application>().getString(R.string.file_name))
-        availableWords.addAll(element as MutableList<String>)
+        availableWords.addAll(words as MutableList<String>)
     }
 
 
