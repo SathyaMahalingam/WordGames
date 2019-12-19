@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="baseViewModel"
+            type="com.sample.wordgame.core.common.viewmodel.BaseViewModel" />
+    </data>
+
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root"
+        android:clipChildren="false"
+        android:background="@drawable/shape_app_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/stack"
+            android:clipChildren="false"
+            android:layout_marginTop="@dimen/header_height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/content_view"
+                android:visibility="@{baseViewModel.showContentView? View.VISIBLE: View.GONE}"
+                android:clipChildren="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <include
+                android:id="@+id/progress_view"
+                android:visibility="@{baseViewModel.showProgressView? View.VISIBLE: View.GONE}"
+                bind:baseViewModel="@{baseViewModel}"
+                layout="@layout/common_progress_view" />
+
+            <include
+                android:id="@+id/empty_view"
+                android:visibility="@{baseViewModel.showEmptyView? View.VISIBLE: View.GONE}"
+                layout="@layout/common_empty_view" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_83"
+                android:visibility="@{baseViewModel.showTopOverlay? View.VISIBLE: View.GONE}"
+                android:background="@drawable/shape_common_top_overlay"/>
+
+        </FrameLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            app:elevation="@dimen/dimen_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/header_view"
+                android:visibility="@{baseViewModel.showHeaderView? View.VISIBLE: View.GONE}"
+                bind:baseViewModel="@{baseViewModel}"
+                layout="@layout/common_header_view"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

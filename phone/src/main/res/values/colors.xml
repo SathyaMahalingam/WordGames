@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ef5350</color>
+    <color name="colorPrimaryDark">#b71c1c</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="pale_grey">#fdfdfe</color>
+    <color name="pale_white">#f0f0f0</color>
+    <color name="pale_grey_0">#00fdfdfe</color>
+    <color name="pale_grey_82">#d1fdfdfe</color>
+    <color name="grey_blue_toast_bg">#a4b2bd</color>
+
+</resources>

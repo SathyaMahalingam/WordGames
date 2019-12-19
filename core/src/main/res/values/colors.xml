@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="dark_grey_blue">#2a394f</color>
+    <color name="dodger_blue">#3394ff</color>
+    <color name="grey_blue">#637a89</color>
+    <color name="reddish_pink">#f44336</color>
+</resources>

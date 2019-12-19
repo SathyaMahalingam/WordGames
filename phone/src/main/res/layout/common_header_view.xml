@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="baseViewModel"
+            type="com.sample.wordgame.core.common.viewmodel.BaseViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/colorPrimaryDark"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/left_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{baseViewModel::onLeftViewClick}"
+            android:padding="@dimen/dimen_17"
+            android:scaleType="center"
+            android:src="@{baseViewModel.headerLeftImage}"
+            android:visibility="@{baseViewModel.getHideHeaderLeftButton()?  View.INVISIBLE: View.VISIBLE}" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/left_view"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:textStyle="bold"
+            android:text="@{baseViewModel.headerTitle}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_17" />
+
+        <ImageView
+            android:id="@+id/right_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:filterTouchesWhenObscured="true"
+            android:onClick="@{baseViewModel::onRightViewClick}"
+            android:paddingStart="@dimen/dimen_10"
+            android:paddingTop="@dimen/dimen_17"
+            android:paddingEnd="@dimen/dimen_17"
+            android:paddingBottom="@dimen/dimen_17"
+            android:scaleType="center"
+            android:src="@{baseViewModel.headerRightImage}"
+            android:visibility="@{baseViewModel.getHideHeaderRightButton()?  View.GONE: View.VISIBLE}" />
+
+    </RelativeLayout>
+
+</layout>

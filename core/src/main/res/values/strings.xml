@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Word Game</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="generic_error_message">Something went Wrong</string>
+    <string name="file_name">words</string>
+    <string name="loading_wait">Loading...Please wait!</string>
+</resources>

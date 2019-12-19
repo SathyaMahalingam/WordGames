@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Word Game</string>
+    <string name="cancel">Cancel</string>
+    <string name="action_settings">Ok</string>
+    <string name="GPSAlertDialogMessage">Allow GPSLocationTracking to access this device location?</string>
+    <string name="GPSAlertDialogTitle" />
+    <string name="no_data_detail_msg">You have no matches \nyet.</string>
+    <string name="no_data_available">Words Not Found:(</string>
+    <string name="game_label">Word Game</string>
+    <string name="list_words_label">Words Available</string>
+    <string name="scan">Scan</string>
+</resources>
